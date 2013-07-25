@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Mortality", "Mortality\Mortality.fsproj", "{F08B10D5-6E48-438A-AC90-49F7B91E8164}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Mortality.Tests", "Mortality.Tests\Mortality.Tests.fsproj", "{372E1CF8-F40F-403B-BD5A-66099C6000AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F08B10D5-6E48-438A-AC90-49F7B91E8164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F08B10D5-6E48-438A-AC90-49F7B91E8164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F08B10D5-6E48-438A-AC90-49F7B91E8164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F08B10D5-6E48-438A-AC90-49F7B91E8164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{372E1CF8-F40F-403B-BD5A-66099C6000AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{372E1CF8-F40F-403B-BD5A-66099C6000AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{372E1CF8-F40F-403B-BD5A-66099C6000AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{372E1CF8-F40F-403B-BD5A-66099C6000AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
