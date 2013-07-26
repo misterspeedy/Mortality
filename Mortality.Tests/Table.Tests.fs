@@ -41,7 +41,7 @@ type ``Given a Table instance``() =
 
     [<Test>]
     member t.``The omega property reflects the base age and the length of the input array``() =
-        let expected = 19
+        let expected = 20
         let table = Table(Qx, 16, [|0.1; 0.2; 0.3|])
         let actual = table.omega
         actual |> should equal expected
@@ -69,43 +69,35 @@ type ``Given a Table instance``() =
 
     [<Test>]
     member t.``Accessing the lx value at the base age reflects the first input value (when created from l values)``() =
-        let expected = 100000
+        let expected = 100000.
         let table = Table(Qx, 16, [|0.1; 0.2; 0.3|])
         let actual = table.lx(16)
         actual |> should equal expected
 
     [<Test>]
-    member t.``Accessing the qx value at age omega-1 reflects the last input value (when created from q values)``() =
-        let expected = true
-        let actual = false
+    member t.``Accessing the qx value at age omega-2 reflects the last input value (when created from q values)``() =
+        let expected = 0.2
+        let table = Table(Lx, 16, [|100000.; 50000.; 40000.|])
+        let actual = table.qx(table.omega-2)
         actual |> should equal expected
 
     [<Test>]
     member t.``Accessing the lx value at age omega-1 reflects the last input value (when created from q values)``() =
-        let expected = true
-        let actual = false
+        let expected = 100000. * (1.-0.1) * (1.-0.2) * (1.-0.3)
+        let table = Table(Qx, 16, [|0.1; 0.2; 0.3|])
+        let actual = table.lx(table.omega-1)
         actual |> should equal expected
 
     [<Test>]
-    member t.``Accessing the qx value at age omega-1 reflects the last input value (when created from l values)``() =
-        let expected = true
-        let actual = false
-        actual |> should equal expected
-
-    [<Test>]
-    member t.``Accessing the lx value at age omega-1 reflects the last input value (when created from l values)``() =
-        let expected = true
-        let actual = false
-        actual |> should equal expected
-
-    [<Test>]
-    member t.``Accessing the qx value at age omega returns 1. (when created from l values)``() =
-        let expected = true
-        let actual = false
+    member t.``Accessing the qx value at age omega-1 returns 1 (when created from l values)``() =
+        let expected = 1.
+        let table = Table(Lx, 16, [|100000.; 50000.; 40000.|])
+        let actual = table.qx(table.omega-1)
         actual |> should equal expected
 
     [<Test>]
     member t.``Accessing the lx value at age omega returns 0 (when created from l values)``() =
-        let expected = true
-        let actual = false
+        let expected = 0.
+        let table = Table(Qx, 16, [|0.1; 0.2; 0.3|])
+        let actual = table.lx(table.omega)
         actual |> should equal expected
