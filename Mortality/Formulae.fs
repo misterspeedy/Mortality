@@ -57,3 +57,14 @@ module Formulae =
     /// Complete life expectancy at age x, using a qx table
     let eqc (qx : float[]) x =
         (eq qx x) + 0.5
+
+    /// Curtate n-year temporary life expectancy at age x, over n years, using an lx table
+    let ect (lx : float[]) n x =
+        [1..n]
+        |> Seq.map (fun k -> npx lx k x)
+        |> Seq.sum
+
+    /// Curtate n-year temporary life expectancy at age x, over n years, using a qx table
+    let eqct (qx : float[]) n x =
+        let lx = qx |> qxToLx 100000.
+        ect lx n x

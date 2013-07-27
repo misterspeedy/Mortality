@@ -153,3 +153,32 @@ type ``Given the mortality formulae and a generated lx table``() =
                               let expected = (Formulae.eq qx x) + 0.5
                               let actual = Formulae.eqc qx x
                               actual |> should (equalWithin tolerance) expected)
+
+    /// ect tests:
+
+    [<Test>]
+    member t.``Curtate temporary life expectancy is the same as curtate life expectancy when x + n = omega, using an lx table``()=
+        for x in [0..w] do
+            let n = w-x
+            let expected = Formulae.e lx x
+            let actual = Formulae.ect lx n x 
+            actual |> should (equalWithin tolerance) expected
+
+    [<Test>]
+    member t.``Curtate temporary life expectancy for one year at age 0 is p0, using an lx table``()=
+        let expected = Formulae.npx lx 1 0
+        let actual = Formulae.ect lx 1 0
+        actual |> should (equalWithin tolerance) expected
+
+    [<Test>]
+    member t.``Curtate temporary life expectancy for two years at age 0 is p0+2p0, using an lx table``()=
+        let expected = (Formulae.npx lx 1 0) + (Formulae.npx lx 2 0)
+        let actual = Formulae.ect lx 2 0
+        actual |> should (equalWithin tolerance) expected
+
+    [<Test>]
+    member t.``the curtate life expectancy using an qx table is the same as when using a lx table for all ages``() =
+        [0..w]
+        |> Seq.iter (fun x -> let expected = Formulae.ect lx 4 x
+                              let actual = Formulae.eqct qx 4 x
+                              actual |> should (equalWithin tolerance) expected)

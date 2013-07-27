@@ -1,5 +1,7 @@
 ﻿namespace Mortality
 
+// TODO: handle inputs with insufficient elements.
+
 type InputType = Qx | Lx
 
 type Table(inputType : InputType, baseAge : int, inputs : float[]) =
