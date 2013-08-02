@@ -68,3 +68,19 @@ module Formulae =
     let eqct (qx : float[]) n x =
         let lx = qx |> qxToLx 100000.
         ect lx n x
+
+    module Generational =
+
+        // TODO resolve the fact that this takes qx and standard npx takes lx
+        // TODO needs generic tests
+
+        /// Probability that someone of age x in asAtYear will survive to x+n, using an lx table with a 
+        /// base year of baseYear, and a table of improvement factors
+        let npx (qx : float[]) (improvements : float[]) n x asAtYear baseYear =
+            [0..n-1]
+            |> List.map (fun y -> let index = x+y
+                                  let improvementYears = asAtYear - baseYear + y |> float
+                                  1. - (qx.[index] * ((1.-improvements.[index]) ** improvementYears)))
+
+            |> Seq.fold (*) 1.
+

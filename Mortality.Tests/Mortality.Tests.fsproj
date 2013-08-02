@@ -52,8 +52,9 @@
     <Compile Include="Formulae.Tests.Generic.fs" />
     <None Include="packages.config" />
     <None Include="app.config" />
-    <Compile Include="Formulae.Tests.Promislow.fs" />
     <Compile Include="Table.Tests.fs" />
+    <Compile Include="Formulae.Tests.Promislow.fs" />
+    <Compile Include="Formulae.Generational.Tests.Promislow.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mortality\Mortality.fsproj">
