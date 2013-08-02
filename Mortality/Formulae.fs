@@ -74,7 +74,7 @@ module Formulae =
         // TODO resolve the fact that this takes qx and standard npx takes lx
         // TODO needs generic tests
 
-        /// Probability that someone of age x in asAtYear will survive to x+n, using an lx table with a 
+        /// Probability that someone of age x in asAtYear will survive to x+n, using a qx table with a 
         /// base year of baseYear, and a table of improvement factors
         let npx (qx : float[]) (improvements : float[]) n x asAtYear baseYear =
             [0..n-1]
